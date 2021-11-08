@@ -1,6 +1,5 @@
-import { WhitespaceGuard } from '../../../../src/guards/WhitespaceGuard'
 import { TestError } from '../../../mocks/TestError'
-import { ArgumentError } from '../../../../src'
+import { ArgumentError, WhitespaceGuard } from '../../../../src'
 
 describe('WhitespaceGuard', () => {
   const customMessage = 'Testing custom error message'
