@@ -1,0 +1,56 @@
+{
+  "name": "guarder",
+  "version": "0.1.0",
+  "description": "Guarder provides simple validation logic to reduce clutter with inline guard statements",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "prepare": "npm run lint && npm audit && npm run build",
+    "lint": "",
+    "build": "tsc",
+    "test": "mocha --config ./test/support/unit.yml",
+    "coverage": "nyc --reporter=lcov npm run test"
+  },
+  "keywords": [
+    "validation",
+    "extensible",
+    "guard",
+    "custom"
+  ],
+  "files": [
+    "lib",
+    "test",
+    "LICENSE",
+    "tsconfig.json"
+  ],
+  "author": {
+    "name": "Alex Pickering",
+    "url": "https://github.com/ToeFungi/"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ToeFungi/guarder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ToeFungi/guarder/issues"
+  },
+  "homepage": "https://github.com/ToeFungi/guarder",
+  "devDependencies": {
+    "@types/archiver": "5.1.1",
+    "@types/chai": "4.2.22",
+    "@types/mocha": "9.0.0",
+    "@types/sinon": "10.0.6",
+    "@types/sinon-chai": "3.2.5",
+    "@types/uuid": "3.4.6",
+    "chai": "4.3.4",
+    "mocha": "9.1.3",
+    "nyc": "15.1.0",
+    "sinon": "12.0.1",
+    "sinon-chai": "3.7.0",
+    "source-map-support": "0.5.20",
+    "ts-node": "8.6.2",
+    "tsconfig-paths": "3.9.0",
+    "typescript": "3.8.3"
+  }
+}
