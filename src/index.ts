@@ -1,5 +1,6 @@
 import { Guarder } from './Guarder'
 import { Guard } from './types/Guard'
+import { Guards } from './enums/Guards'
 import { NullGuard } from './guards/NullGuard'
 import { EmptyGuard } from './guards/EmptyGuard'
 import { FalsyGuard } from './guards/FalsyGuard'
@@ -12,6 +13,7 @@ import { GuardNotFoundError } from './errors/GuardNotFoundError'
 
 export {
   Guard,
+  Guards,
   Guarder,
   NullGuard,
   EmptyGuard,
