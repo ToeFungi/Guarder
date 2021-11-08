@@ -16,6 +16,7 @@ Guarder is a simple validation library that allows quick validation on propertie
 - [Installation](#installation)
 - [Guides](#guides)
     - [Default Guards](#default-guards)
+    - [Examples](#examples)
 - [Usage](#usage)
     - [Null Guard](#nullt--anyproperty-t-message-string-error-classerror-t)
     - [Undefined Guard](#undefinedt--anyproperty-t-message-string-error-classerror-t)
@@ -66,8 +67,26 @@ The default configured guards are the follow:
 - [EmptyGuard](https://github.com/ToeFungi/guarder/blob/master/src/guards/EmptyGuard.ts)  
   _Empty Guard ensures that the property is not null or undefined. A string should contain at least one character, an
   array should contain at least one item, an object should contain at least one key_
-
+  
 As a general rule of thumb, default configured guards will always be available by name within the `Guarder` class.
+
+#### Examples
+
+Considering this is a convenience package, the following example highlights reducing line count.
+
+```typescript
+// This is
+if (property === undefined || property === null) {
+  throw new Error('Property cannot be null')
+}
+
+// Replace by this
+Guard.null(property)
+// Or this
+Guard.null(property, 'Custom Error Message')
+// Or this
+Guard.null(property, 'Custom Error Message', CustomError)
+```
 
 ## Usage
 
