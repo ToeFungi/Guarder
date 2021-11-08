@@ -9,14 +9,11 @@ class FalsyGuard implements Guard {
   /**
    * @inheritDoc
    */
-  public guard<T = any>(property: T, errorMessage?: string, error?: Instantiable<Error>): T {
+  public guard<T = unknown>(property: T, errorMessage?: string, error?: Instantiable<Error>): T {
     const message = errorMessage ?? 'Property not allowed to be falsy'
 
     if (!(!!property)) {
-      if (error) {
-        throw new error(message)
-      }
-
+      if (error) throw new error(message)
       throw new ArgumentError(message)
     }
 

@@ -22,7 +22,7 @@ class Guarder {
   /**
    * Returns the property if the property is not null. Throws an error if the property is null.
    */
-  public static null<T = any>(property: T, message?: string, error?: Instantiable<Error>): T {
+  public static null<T = unknown>(property: T, message?: string, error?: Instantiable<Error>): T {
     const emptyGuard = this.guards.get('null')
     return emptyGuard.guard(property, message, error)
   }
@@ -30,7 +30,7 @@ class Guarder {
   /**
    * Returns the property if the property is not undefined. Throws an error if the property is undefined.
    */
-  public static undefined<T = any>(property: T, message?: string, error?: Instantiable<Error>): T {
+  public static undefined<T = unknown>(property: T, message?: string, error?: Instantiable<Error>): T {
     const emptyGuard = this.guards.get('undefined')
     return emptyGuard.guard(property, message, error)
   }
@@ -39,7 +39,7 @@ class Guarder {
    * Returns the property if the property is not an empty string, object, array, undefined or null. Throws an error if
    * the criteria is not met.
    */
-  public static empty<T = any>(property: T, message?: string, error?: Instantiable<Error>): T {
+  public static empty<T = unknown>(property: T, message?: string, error?: Instantiable<Error>): T {
     const emptyGuard = this.guards.get('empty')
     return emptyGuard.guard(property, message, error)
   }
@@ -47,7 +47,7 @@ class Guarder {
   /**
    * Returns the property if the property does not evaluate to false in a type coercion
    */
-  public static falsy<T = any>(property: T, message?: string, error?: Instantiable<Error>): T {
+  public static falsy<T = unknown>(property: T, message?: string, error?: Instantiable<Error>): T {
     const falsyGuard = this.guards.get('falsy')
     return falsyGuard.guard(property, message, error)
   }
@@ -56,7 +56,7 @@ class Guarder {
    * Returns the property if the property passes the custom guards validation logic and will throw an Argument Error or
    * custom error if specified
    */
-  public static custom<T = any>(guardName: string, property: T, message?: string, error?: Instantiable<Error>): T {
+  public static custom<T = unknown>(guardName: string, property: T, message?: string, error?: Instantiable<Error>): T {
     const customGuard = this.guards.get(guardName)
 
     if (!customGuard) {
@@ -70,7 +70,7 @@ class Guarder {
    * Returns the property if the property passes the custom guards validation logic and will throw an Argument Error or
    * custom error if specified
    */
-  public static guard<T = any>(guard: Instantiable<Guard>, property: T, message?: string, error?: Instantiable<Error>): T {
+  public static guard<T = unknown>(guard: Instantiable<Guard>, property: T, message?: string, error?: Instantiable<Error>): T {
     const customGuard = new guard()
     return customGuard.guard(property, message, error)
   }

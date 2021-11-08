@@ -10,7 +10,7 @@ class EmptyGuard implements Guard {
   /**
    * @inheritDoc
    */
-  public guard<T = any>(property: T, errorMessage?: string, error?: Instantiable<Error>): T {
+  public guard<T = unknown>(property: T, errorMessage?: string, error?: Instantiable<Error>): T {
     const message = errorMessage ?? 'Property not allowed to be empty'
 
     const isNull = property === null
@@ -32,11 +32,11 @@ class EmptyGuard implements Guard {
     return property
   }
 
+  /**
+   * Throw the error with the error message
+   */
   private failed(message: string, error?: Instantiable<Error>): never {
-    if (error) {
-      throw new error(message)
-    }
-
+    if (error) throw new error(message)
     throw new ArgumentError(message)
   }
 }
