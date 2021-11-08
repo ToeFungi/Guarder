@@ -94,19 +94,19 @@ describe('Guarder', () => {
     })
   })
 
-  describe('#inlineCustom', () => {
+  describe('#guard', () => {
     const property = 'foobar'
 
     it('returns the value when the property does not match "foobar"', () => {
       const property = 'barfoo'
 
-      return Guarder.inlineCustom(TestGuard, property)
+      return Guarder.guard(TestGuard, property)
         .should.deep.equal(property)
     })
 
     it('throws given error when the property is "foobar"', () => {
       try {
-        Guarder.inlineCustom(TestGuard, property, customMessage, TestError)
+        Guarder.guard(TestGuard, property, customMessage, TestError)
       } catch (error) {
         error.should.be.instanceOf(TestError)
         error.message.should.deep.equal(customMessage)
@@ -115,7 +115,7 @@ describe('Guarder', () => {
 
     it('throws default `ArgumentError` when the property is "foobar"', () => {
       try {
-        Guarder.inlineCustom(TestGuard, property)
+        Guarder.guard(TestGuard, property)
       } catch (error) {
         error.should.be.instanceOf(ArgumentError)
         error.message.should.deep.equal('Property not allowed to be "foobar"')

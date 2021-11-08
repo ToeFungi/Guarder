@@ -70,7 +70,7 @@ class Guarder {
    * Returns the property if the property passes the custom guards validation logic and will throw an Argument Error or
    * custom error if specified
    */
-  public static inlineCustom<T = any>(guard: Instantiable<Guard>, property: T, message?: string, error?: Instantiable<Error>): T {
+  public static guard<T = any>(guard: Instantiable<Guard>, property: T, message?: string, error?: Instantiable<Error>): T {
     const customGuard = new guard()
     return customGuard.guard(property, message, error)
   }

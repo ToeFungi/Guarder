@@ -18,15 +18,15 @@ Guarder is a simple validation library that allows quick validation on propertie
     - [Default Guards](#default-guards)
     - [Examples](#examples)
 - [Usage](#usage)
-    - [Null Guard](#nullt--anyproperty-t-message-string-error-classerror-t)
-    - [Undefined Guard](#undefinedt--anyproperty-t-message-string-error-classerror-t)
-    - [Empty Guard](#emptyt--anyproperty-t-message-string-error-classerror-t)
-    - [Falsy Guard](#falsyt--anyproperty-t-message-string-error-classerror-t)
-    - [Get Registered Guards](#getregisteredguards-string)
-    - [Unregister Guard](#unregisterguardguardname-string-void)
-    - [Register Guard](#registerguardguardname-string-guard-classguard-void)
-    - [Custom Guards](#customt--anyguardname-string-property-t-message-string-error-classerror-t)
-    - [Inline Custom Guards](#inlinecustomt--anyguard-guard-property-t-message-string-error-classerror-t)
+    - [Null Guard](#nullproperty-t-message-string-error-instantiable)
+    - [Undefined Guard](#undefinedproperty-t-message-string-error-instantiable)
+    - [Empty Guard](#emptyproperty-t-message-string-error-instantiable)
+    - [Falsy Guard](#falsyproperty-t-message-string-error-instantiable)
+    - [Get Registered Guards](#getregisteredguards)
+    - [Unregister Guard](#unregisterguardguardname-string)
+    - [Register Guard](#registerguardguardname-string-guard-instantiable)
+    - [Custom Guards](#customguardname-string-property-t-message-string-error-instantiable)
+    - [Inline Custom Guards](#guardguard-guard-property-t-message-string-error-instantiable)
 - [Tests](#tests)
 - [Issues](#issues)
 - [Contributions](#contributions)
@@ -90,7 +90,7 @@ Guard.null(property, 'Custom Error Message', CustomError)
 
 ## Usage
 
-#### null<T = any>(property: T, message?: string, error?: Class<Error>): T
+#### .null(property: T, message?: string, error?: Instantiable)
 
 You can validate that the specified property is not `null` using the `.null` guard and specify the error message and
 error to be thrown if the property is `null`.
@@ -110,7 +110,7 @@ const property = Guarder.null(null, 'Property is null')
 const property = Guarder.null(null, 'Property is null', CustomError)
 ```
 
-#### undefined<T = any>(property: T, message?: string, error?: Class<Error>): T
+#### .undefined(property: T, message?: string, error?: Instantiable)
 
 You can validate that the specified property is not `undefined` using the `.undefined` guard and specify the error
 message and error to be thrown if the property is `undefined`.
@@ -130,7 +130,7 @@ const property = Guarder.undefined(undefined, 'Property is undefined')
 const property = Guarder.undefined(undefined, 'Property is undefined', CustomError)
 ```
 
-#### empty<T = any>(property: T, message?: string, error?: Class<Error>): T
+#### .empty(property: T, message?: string, error?: Instantiable)
 
 You can validate that the specified property is not `empty` using the `.empty` guard and specify the error message and
 error to be thrown if the property is `empty`. The property will be considered empty if:
@@ -157,7 +157,7 @@ const property = Guarder.empty('', 'Property is empty')
 const property = Guarder.empty('', 'Property is undefined', CustomError)
 ```
 
-#### falsy<T = any>(property: T, message?: string, error?: Class<Error>): T
+#### .falsy(property: T, message?: string, error?: Instantiable)
 
 You can guard against values that evaluate to false in type coercion.
 
@@ -177,7 +177,7 @@ Guarder.falsy([]) // []
 Guarder.falsy({}) // {}
 ```
 
-#### getRegisteredGuards(): string[]
+#### .getRegisteredGuards()
 
 You can retrieve the list of registered guards to validate the guard functionality available. By default, the `empty`,
 `null` and `undefined` guards are initialised.
@@ -188,7 +188,7 @@ console.log({ guards })
 // [ 'null', 'empty', 'undefined' ]
 ```
 
-#### unregisterGuard(guardName: string): void
+#### .unregisterGuard(guardName: string)
 
 You can unregister a specific guard by name. This will remove the guard from the map and it will no longer be available
 for use.
@@ -201,7 +201,7 @@ console.log({ guards })
 // [ 'null', 'undefined' ]
 ```
 
-#### registerGuard(guardName: string, guard: Class<Guard>): void
+#### .registerGuard(guardName: string, guard: Instantiable)
 
 You can register guards and specify the guard name. This allows you to build custom guards and register them for use.
 
@@ -213,7 +213,7 @@ console.log({ guards })
 // [ 'null', 'empty', 'undefined', 'custom-guard' ]
 ```
 
-#### custom<T = any>(guardName: string, property: T, message?: string, error?: Class<Error>): T
+#### .custom(guardName: string, property: T, message?: string, error?: Instantiable)
 
 You can use your custom guard after it is registered with the `custom` functionality. You need to specify which guard
 you want to use and pass the remaining parameters as normal.
@@ -224,7 +224,7 @@ const property = Guarder.custom('custom-guard', 'property', 'Property failed val
 console.log({ property })
 ```
 
-#### inlineCustom<T = any>(guard: Guard, property: T, message?: string, error?: Class<Error>): T
+#### .guard(guard: Guard, property: T, message?: string, error?: Instantiable)
 
 You can specify the guard to use as a once off guard without needing to register it using the `inlineCustom` mechanism.
 The `TestGuard` guard will not be registered in the guard map and will need to be passed each time the mechanism is
