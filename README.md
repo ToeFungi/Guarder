@@ -14,6 +14,8 @@ Guarder is a simple validation library that allows quick validation on propertie
 
 - [Getting Started](#getting-started)
 - [Installation](#installation)
+- [Guides](#guides)
+    - [Default Guards](#default-guards)
 - [Usage](#usage)
     - [Null Guard](#nullt--anyproperty-t-message-string-error-classerror-t)
     - [Undefined Guard](#undefinedt--anyproperty-t-message-string-error-classerror-t)
@@ -46,6 +48,26 @@ Use the following command to install the Guarder package:
 ```
 npm i guarder
 ```
+
+## Guides
+
+Guides are basic information about the package for easier use. This section aims to satisfy FAQs.
+
+#### Default Guards
+
+The default configured guards are the follow:
+
+- [NullGuard](https://github.com/ToeFungi/guarder/blob/master/src/guards/NullGuard.ts)  
+  _Undefined Guard ensures that the property is not null_
+- [UndefinedGuard](https://github.com/ToeFungi/guarder/blob/master/src/guards/UndefinedGuard.ts)  
+  _Undefined Guard ensures that the property is not undefined_
+- [FalsyGuard](https://github.com/ToeFungi/guarder/blob/master/src/guards/FalsyGuard.ts)  
+  _Falsy Guard ensures that the property does not evaluate to false in a type coercion_
+- [EmptyGuard](https://github.com/ToeFungi/guarder/blob/master/src/guards/EmptyGuard.ts)  
+  _Empty Guard ensures that the property is not null or undefined. A string should contain at least one character, an
+  array should contain at least one item, an object should contain at least one key_
+
+As a general rule of thumb, default configured guards will always be available by name within the `Guarder` class.
 
 ## Usage
 
