@@ -1,5 +1,6 @@
 import { Guarder } from '../Guarder'
 import { Guard } from '../types/Guard'
+import { NumberGuard } from './NumberGuard'
 import { Instantiable } from '../types/Instantiable'
 import { ArgumentError } from '../errors/ArgumentError'
 
@@ -11,13 +12,11 @@ class NegativeGuard implements Guard {
    * @inheritDoc
    */
   public guard<T = unknown>(property: T, errorMessage?: string, error?: Instantiable<Error>): T {
+    Guarder.guard(NumberGuard, property, errorMessage, error)
+
     const int = parseInt(Guarder.empty(property).toString())
 
-    if (isNaN(int)) {
-      this.throwError(errorMessage ?? 'Property must be a number', error)
-    }
-
-    if (isNaN(int) || int < 0) {
+    if (int < 0) {
       this.throwError(errorMessage ?? 'Property not allowed to be negative number', error)
     }
 
