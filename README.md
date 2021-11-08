@@ -16,6 +16,7 @@ Guarder is a simple validation library that allows quick validation on propertie
 - [Installation](#installation)
 - [Guides](#guides)
     - [Default Guards](#default-guards)
+    - [Official Guards](#official-guards)
     - [Examples](#examples)
 - [Usage](#usage)
     - [Null Guard](#nullproperty-t-message-string-error-instantiable)
@@ -58,17 +59,39 @@ Guides are basic information about the package for easier use. This section aims
 
 The default configured guards are the following:
 
+- [EmptyGuard](https://github.com/ToeFungi/guarder/blob/master/src/guards/EmptyGuard.ts)  
+  _Empty Guard ensures that the property is not null or undefined. A string should contain at least one character, an
+  array should contain at least one item, an object should contain at least one key_
+- [FalsyGuard](https://github.com/ToeFungi/guarder/blob/master/src/guards/FalsyGuard.ts)  
+  _Falsy Guard ensures that the property does not evaluate to false in a type coercion_
 - [NullGuard](https://github.com/ToeFungi/guarder/blob/master/src/guards/NullGuard.ts)  
   _Undefined Guard ensures that the property is not null_
 - [UndefinedGuard](https://github.com/ToeFungi/guarder/blob/master/src/guards/UndefinedGuard.ts)  
   _Undefined Guard ensures that the property is not undefined_
-- [FalsyGuard](https://github.com/ToeFungi/guarder/blob/master/src/guards/FalsyGuard.ts)  
-  _Falsy Guard ensures that the property does not evaluate to false in a type coercion_
+
+As a general rule of thumb, default configured guards will always be available by name within the `Guarder` class.
+
+#### Official Guards
+
+The full list of packaged official guards include:
+
 - [EmptyGuard](https://github.com/ToeFungi/guarder/blob/master/src/guards/EmptyGuard.ts)  
   _Empty Guard ensures that the property is not null or undefined. A string should contain at least one character, an
   array should contain at least one item, an object should contain at least one key_
-  
-As a general rule of thumb, default configured guards will always be available by name within the `Guarder` class.
+- [FalsyGuard](https://github.com/ToeFungi/guarder/blob/master/src/guards/FalsyGuard.ts)  
+  _Falsy Guard ensures that the property does not evaluate to false in a type coercion_
+- [NegativeGuard](https://github.com/ToeFungi/guarder/blob/master/src/guards/NegativeGuard.ts)  
+  _Negative Guard validates a property is not a negative number_
+- [NullGuard](https://github.com/ToeFungi/guarder/blob/master/src/guards/NullGuard.ts)  
+  _Undefined Guard ensures that the property is not null_
+- [NumberGuard](https://github.com/ToeFungi/guarder/blob/master/src/guards/NumberGuard.ts)  
+  _Number Guard validates that the property is a number_
+- [UndefinedGuard](https://github.com/ToeFungi/guarder/blob/master/src/guards/UndefinedGuard.ts)  
+  _Undefined Guard ensures that the property is not undefined_
+- [WhitespaceGuard](https://github.com/ToeFungi/guarder/blob/master/src/guards/WhitespaceGuard.ts)  
+  _Whitespace Guard validates that the string does not contain only whitespace_
+- [ZeroGuard](https://github.com/ToeFungi/guarder/blob/master/src/guards/ZeroGuard.ts)  
+  _Zero Guard validates that the property is not zero_
 
 #### Examples
 
