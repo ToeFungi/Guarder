@@ -1,5 +1,5 @@
-import { Class } from '../types/Class'
 import { Guard } from '../types/Guard'
+import { Instantiable } from '../types/Instantiable'
 import { ArgumentError } from '../errors/ArgumentError'
 
 /**
@@ -10,7 +10,7 @@ class EmptyGuard implements Guard {
   /**
    * @inheritDoc
    */
-  public guard<T = any>(property: T, errorMessage?: string, error?: Class<Error>): T {
+  public guard<T = any>(property: T, errorMessage?: string, error?: Instantiable<Error>): T {
     const message = errorMessage ?? 'Property not allowed to be empty'
 
     const isNull = property === null
@@ -32,7 +32,7 @@ class EmptyGuard implements Guard {
     return property
   }
 
-  private failed(message: string, error?: Class<Error>): never {
+  private failed(message: string, error?: Instantiable<Error>): never {
     if (error) {
       throw new error(message)
     }

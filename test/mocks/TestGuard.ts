@@ -1,9 +1,7 @@
-import { Class } from '../../src/types/Class'
-import { Guard } from '../../src/types/Guard'
-import { ArgumentError } from '../../src/errors/ArgumentError'
+import { Guard, Instantiable, ArgumentError } from '../../src'
 
 class TestGuard implements Guard {
-  public guard<T = string>(property: T, errorMessage?: string, error?: Class<Error>): T {
+  public guard<T = string>(property: T, errorMessage?: string, error?: Instantiable<Error>): T {
     const message = errorMessage ?? 'Property not allowed to be "foobar"'
 
     if (typeof property === 'string' && property === 'foobar') {

@@ -56,7 +56,7 @@ Guides are basic information about the package for easier use. This section aims
 
 #### Default Guards
 
-The default configured guards are the follow:
+The default configured guards are the following:
 
 - [NullGuard](https://github.com/ToeFungi/guarder/blob/master/src/guards/NullGuard.ts)  
   _Undefined Guard ensures that the property is not null_
