@@ -24,20 +24,20 @@ Guarder is a simple validation library that allows quick validation on propertie
 
 ## Getting Started
 
-You can get started with cloning the Zipster repository by using the following command:
+You can get started with cloning the Guarder repository by using the following command:
 
 ```bash
-$ git clone git@github.com:ToeFungi/zipster.git
-$ cd zipster
+$ git clone git@github.com:ToeFungi/guarder.git
+$ cd guarder
 $ npm i
 ```
 
 ## Installation
 
-Use the following command to install the Zipster package:
+Use the following command to install the Guarder package:
 
 ```
-npm i zipster
+npm i guarder
 ```
 
 ## Usage
