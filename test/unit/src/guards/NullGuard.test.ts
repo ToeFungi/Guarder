@@ -1,7 +1,7 @@
 import { TestError } from '../../../mocks/TestError'
 import { ArgumentError, NullGuard } from '../../../../src'
 
-describe('#NullGuard', () => {
+describe('NullGuard', () => {
   const customMessage = 'Testing custom error message'
 
   let nullGuard: NullGuard
