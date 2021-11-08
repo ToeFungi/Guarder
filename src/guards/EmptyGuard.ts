@@ -1,3 +1,4 @@
+import { Guarder } from '../Guarder'
 import { Guard } from '../types/Guard'
 import { Instantiable } from '../types/Instantiable'
 import { ArgumentError } from '../errors/ArgumentError'
@@ -13,12 +14,8 @@ class EmptyGuard implements Guard {
   public guard<T = unknown>(property: T, errorMessage?: string, error?: Instantiable<Error>): T {
     const message = errorMessage ?? 'Property not allowed to be empty'
 
-    const isNull = property === null
-    const isUndefined = property === undefined
-
-    if (isNull || isUndefined) {
-      return this.failed(message, error)
-    }
+    Guarder.null(property, message, error)
+    Guarder.undefined(property, message, error)
 
     const isEmptyString = typeof property === 'string' ? property === '' : false
     const isArrayEmpty = Array.isArray(property) ? property.length === 0 : false
@@ -26,18 +23,11 @@ class EmptyGuard implements Guard {
       .length === 0 : false
 
     if (isEmptyString || isArrayEmpty || isObjectEmpty) {
-      return this.failed(message, error)
+      if (error) throw new error(message)
+      throw new ArgumentError(message)
     }
 
     return property
-  }
-
-  /**
-   * Throw the error with the error message
-   */
-  private failed(message: string, error?: Instantiable<Error>): never {
-    if (error) throw new error(message)
-    throw new ArgumentError(message)
   }
 }
 

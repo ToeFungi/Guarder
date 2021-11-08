@@ -6,6 +6,7 @@ import { FalsyGuard } from './guards/FalsyGuard'
 import { Instantiable } from './types/Instantiable'
 import { ArgumentError } from './errors/ArgumentError'
 import { UndefinedGuard } from './guards/UndefinedGuard'
+import { WhitespaceGuard } from './guards/WhitespaceGuard'
 import { GuardNotFoundError } from './errors/GuardNotFoundError'
 
 export {
@@ -17,5 +18,6 @@ export {
   Instantiable,
   ArgumentError,
   UndefinedGuard,
-  GuardNotFoundError,
+  WhitespaceGuard,
+  GuardNotFoundError
 }
