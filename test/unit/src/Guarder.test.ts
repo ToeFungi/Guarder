@@ -1,3 +1,4 @@
+import { EmptyGuard } from '../../../lib'
 import { TestError } from '../../mocks/TestError'
 import { TestGuard } from '../../mocks/TestGuard'
 import { CustomGuards } from '../../mocks/CustomGuards'
@@ -114,16 +115,28 @@ describe('Guarder', () => {
   })
 
   describe('#registerGuard', () => {
-    it('registers the custom guard in the guards map', () => {
-      const guardName = 'test-guard'
+    const guardName = 'test-guard'
 
+    afterEach(() => Guarder.unregisterGuard(guardName))
+
+    it('registers the custom guard in the guard map', () => {
       Guarder.registerGuard(guardName, TestGuard)
       return Guarder.getRegisteredGuards()
         .should.include(guardName)
     })
+
+    it('does not register a custom guard if the name already exists in the guard map', () => {
+      const guardName = 'empty'
+
+      Guarder.registerGuard(guardName, TestGuard)
+      return Guarder.getRegisteredGuards()
+        .should.deep.equal(['empty', 'null', 'undefined'])
+    })
   })
 
   describe('#unregisterGuard', () => {
+    afterEach(() => Guarder.registerGuard('empty', EmptyGuard))
+
     it('unregister the specified guard in the guard map', () => {
       const guardName = 'empty'
 
@@ -134,6 +147,14 @@ describe('Guarder', () => {
 
       return Guarder.getRegisteredGuards()
         .should.not.include(guardName)
+    })
+
+    it('does not unregister a custom guard if the guard is not in the guard map', () => {
+      const guardName = 'test-guard'
+
+      Guarder.unregisterGuard(guardName)
+      return Guarder.getRegisteredGuards()
+        .should.deep.equal(['null', 'undefined', 'empty'])
     })
   })
 })
