@@ -34,10 +34,19 @@ describe('Guarder', () => {
     })
   })
 
+  describe('#falsy', () => {
+    it('returns the value when the property is not falsy', () => {
+      const property = 'foo'
+
+      return Guarder.falsy(property)
+        .should.deep.equal(property)
+    })
+  })
+
   describe('#getRegisteredGuards', () => {
     it('returns the list of pre-registered guards', () => {
       return Guarder.getRegisteredGuards()
-        .should.deep.equal(['empty', 'null', 'undefined'])
+        .should.deep.equal(['empty', 'null', 'undefined', 'falsy'])
     })
   })
 
@@ -130,7 +139,7 @@ describe('Guarder', () => {
 
       Guarder.registerGuard(guardName, TestGuard)
       return Guarder.getRegisteredGuards()
-        .should.deep.equal(['empty', 'null', 'undefined'])
+        .should.deep.equal(['empty', 'null', 'undefined', 'falsy'])
     })
   })
 
@@ -154,7 +163,7 @@ describe('Guarder', () => {
 
       Guarder.unregisterGuard(guardName)
       return Guarder.getRegisteredGuards()
-        .should.deep.equal(['null', 'undefined', 'empty'])
+        .should.deep.equal(['null', 'undefined', 'falsy', 'empty'])
     })
   })
 })

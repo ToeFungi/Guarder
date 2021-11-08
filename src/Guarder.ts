@@ -2,6 +2,7 @@ import { Class } from './types/Class'
 import { Guard } from './types/Guard'
 import { NullGuard } from './guards/NullGuard'
 import { EmptyGuard } from './guards/EmptyGuard'
+import { FalsyGuard } from './guards/FalsyGuard'
 import { UndefinedGuard } from './guards/UndefinedGuard'
 import { GuardNotFoundError } from './errors/GuardNotFoundError'
 
@@ -16,6 +17,7 @@ class Guarder {
     .set('empty', new EmptyGuard())
     .set('null', new NullGuard())
     .set('undefined', new UndefinedGuard())
+    .set('falsy', new FalsyGuard())
 
   /**
    * Returns the property if the property is not null. Throws an error if the property is null.
@@ -40,6 +42,14 @@ class Guarder {
   public static empty<T = any>(property: T, message?: string, error?: Class<Error>): T {
     const emptyGuard = this.guards.get('empty')
     return emptyGuard.guard(property, message, error)
+  }
+
+  /**
+   * Returns the property if the property does not evaluate to false in a type coercion
+   */
+  public static falsy<T = any>(property: T, message?: string, error?: Class<Error>): T {
+    const falsyGuard = this.guards.get('falsy')
+    return falsyGuard.guard(property, message, error)
   }
 
   /**
