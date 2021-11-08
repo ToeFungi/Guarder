@@ -1,5 +1,11 @@
 # Guarder
 
+[![NPM Version](https://badge.fury.io/js/guarder.svg)](https://badge.fury.io/js/guarder)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ToeFungi_guarder&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ToeFungi_guarder)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ToeFungi_guarder&metric=coverage)](https://sonarcloud.io/summary/new_code?id=ToeFungi_guarder)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=ToeFungi_guarder&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=ToeFungi_guarder)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=ToeFungi_guarder&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=ToeFungi_guarder)
+
 Guarder is a simple validation library that allows quick validation on properties.
 
 **This project is still in development.**
@@ -182,7 +188,7 @@ that any new changes are covered by an accompanying test suite.
 ## Issues
 
 If you find any problems while working with this library, please log an issue
-[here](https://github.com/ToeFungi/zipster/issues) so that development can begin to rectify the error.
+[here](https://github.com/ToeFungi/guarder/issues) so that development can begin to rectify the error.
 
 ## Contributions
 
