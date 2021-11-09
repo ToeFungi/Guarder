@@ -18,7 +18,7 @@ Guarder is a simple validation library that allows quick validation on propertie
     - [Default Guards](#default-guards)
     - [Official Guards](#official-guards)
     - [Examples](#examples)
-    - [Creating Custom Guards](#creating-custom-gards)
+    - [Creating Custom Guards](#creating-custom-guards)
 - [Usage](#usage)
     - [Null Guard](#nullproperty-t-message-string-error-instantiable)
     - [Undefined Guard](#undefinedproperty-t-message-string-error-instantiable)
