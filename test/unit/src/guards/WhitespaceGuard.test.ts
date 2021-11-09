@@ -16,6 +16,13 @@ describe('WhitespaceGuard', () => {
         .should.deep.equal(property)
     })
 
+    it('returns the property when the string is not whitespace', () => {
+      const property = ['asd']
+
+      return whitespaceGuard.guard(property)
+        .should.deep.equal(property)
+    })
+
     it('throws given error when the property is only whitespace', () => {
       try {
         whitespaceGuard.guard(' ', customMessage, TestError)

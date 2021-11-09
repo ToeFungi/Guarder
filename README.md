@@ -18,6 +18,7 @@ Guarder is a simple validation library that allows quick validation on propertie
     - [Default Guards](#default-guards)
     - [Official Guards](#official-guards)
     - [Examples](#examples)
+    - [Creating Custom Guards](#creating-custom-gards)
 - [Usage](#usage)
     - [Null Guard](#nullproperty-t-message-string-error-instantiable)
     - [Undefined Guard](#undefinedproperty-t-message-string-error-instantiable)
@@ -109,6 +110,38 @@ Guard.null(property)
 Guard.null(property, 'Custom Error Message')
 // Or this
 Guard.null(property, 'Custom Error Message', CustomError)
+```
+
+#### Creating Custom Guards
+
+The package exposes the `Guard` interface which can be implemented to create your own custom guard classes. If you are
+planning on using your custom guard multiple times, you can register your custom guard. If you want to use your custom
+guard once, you can simply use the inline guard mechanism exposed by the library.
+
+```typescript
+class CustomGuard implements Guard {
+  public guard<T = unknown>(property: T, errorMessage?: string, error?: Instantiable<Error>): T {
+    const message = errorMessage ?? 'Property not allowed to be `foo`'
+
+    if (property === 'foo') {
+      if (error) throw new error(message)
+      throw new ArgumentError(message)
+    }
+
+    return property
+  }
+}
+
+export { CustomGuard }
+```
+
+```typescript
+// Register and use custom guard
+Guarder.registerGuard('custom-guard', CustomGuard)
+Guarder.custon('custom-guard', property, message, error)
+
+// Inline and once off
+Guarder.guard(CustomGuard, property, message, error)
 ```
 
 ## Usage
@@ -249,12 +282,11 @@ console.log({ property })
 
 #### .guard(guard: Guard, property: T, message?: string, error?: Instantiable)
 
-You can specify the guard to use as a once off guard without needing to register it using the `inlineCustom` mechanism.
-The `TestGuard` guard will not be registered in the guard map and will need to be passed each time the mechanism is
-used.
+You can specify the guard to use as a once off guard without needing to register it using the `guard` mechanism. The
+`TestGuard` guard will not be registered in the guard map and will need to be passed each time the mechanism is used.
 
 ```typescript
-const property = Guarder.inlineCustom(TestGuard, 'property', 'Property failed validation', CustomError)
+const property = Guarder.guard(TestGuard, 'property', 'Property failed validation', CustomError)
 console.log({ property })
 ```
 
